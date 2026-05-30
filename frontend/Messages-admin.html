@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SHIP Message Admin</title>
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+  <div class="admin-shell">
+    <aside class="sidebar">
+      <div class="brand">SHIP</div>
+      <nav>
+        <a href="doctor-admin.html">Doctor</a>
+        <a href="patient-admin.html">Patient</a>
+        <a href="billing-admin.html">Billing</a>
+        <a href="message-admin.html" class="active">Messages</a>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <h1>Messages Admin</h1>
+          <p>Monitor patient and doctor conversations.</p>
+        </div>
+        <div class="topbar-actions">
+          <button id="refreshBtn">Refresh</button>
+          <button id="logoutBtn" class="ghost">Logout</button>
+        </div>
+      </header>
+
+      <section class="stats">
+        <div class="card"><h3>Total Messages</h3><p id="totalMessages">0</p></div>
+        <div class="card"><h3>Conversations</h3><p id="totalConversations">0</p></div>
+        <div class="card"><h3>Unread</h3><p id="unreadCount">0</p></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <h2>Inbox</h2>
+          <div class="filters">
+            <input id="searchInput" type="text" placeholder="Search sender, receiver, or text..." />
+            <select id="statusFilter">
+              <option value="all">All</option>
+              <option value="read">Read</option>
+              <option value="unread">Unread</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>From</th>
+                <th>To</th>
+                <th>Message</th>
+                <th>Status</th>
+                <th>Time</th>
+              </tr>
+            </thead>
+            <tbody id="messagesBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/messages-admin.js"></script>
+</body>
+  </html>
