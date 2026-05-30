@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Admin dashboard for Secure Health Platform." />
+  <meta name="theme-color" content="#0f4c81" />
+  <title>Admin Dashboard | Secure Health Platform</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/admin-dashboard.css" />
+  <link rel="stylesheet" href="css/notifications.css" />
+</head>
+<body>
+  <header class="dashboard-header">
+    <div class="container dashboard-header-inner">
+      <a href="index.html" class="brand" aria-label="Secure Health Platform home">
+        <span class="brand-mark">S</span>
+        <span class="brand-text">
+          <strong>Secure Health</strong>
+          <small>Admin Portal</small>
+        </span>
+      </a>
+
+      <div class="dashboard-user">
+        <div class="user-meta">
+          <strong id="adminName">Loading...</strong>
+          <span id="adminRole">admin</span>
+        </div>
+        <button class="btn btn-ghost" id="adminLogoutBtn" type="button">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="dashboard-shell">
+    <aside class="sidebar">
+      <nav class="sidebar-nav" aria-label="Admin dashboard navigation">
+        <a href="#overview" class="active">Overview</a>
+        <a href="patients.html">Patients</a>
+        <a href="doctor_dashboard.html">Doctors</a>
+        <a href="appointments-admin.html">Appointments</a>
+        <a href="reports-admin.html">Reports</a>
+        <a href="messages-admin.html">Messages</a>
+        <a href="billing-admin.html">Billing</a>
+        <a href="settings.html">Settings</a>
+        <a href="#" id="adminLogoutLink">Logout</a>
+      </nav>
+    </aside>
+
+    <section class="dashboard-content">
+      <section class="dashboard-summary" id="overview">
+        <article class="summary-card">
+          <span>Total Patients</span>
+          <strong id="totalPatientsCount">--</strong>
+        </article>
+        <article class="summary-card">
+          <span>Total Doctors</span>
+          <strong id="totalDoctorsCount">--</strong>
+        </article>
+        <article class="summary-card">
+          <span>Pending Appointments</span>
+          <strong id="pendingAppointmentsCount">--</strong>
+        </article>
+        <article class="summary-card">
+          <span>Open Alerts</span>
+          <strong id="openAlertsCount">--</strong>
+        </article>
+      </section>
+
+      <section class="panel-grid">
+        <article class="panel" id="patients">
+          <div class="panel-header">
+            <h2>Patient Registry</h2>
+            <button class="btn btn-primary" type="button" id="managePatientsBtn">Manage</button>
+          </div>
+          <div class="panel-body" id="patientsPanelBody">
+            <p>Loading patient data...</p>
+          </div>
+        </article>
+
+        <article class="panel" id="doctors">
+          <div class="panel-header">
+            <h2>Doctor Staff</h2>
+            <button class="btn btn-ghost" type="button" id="manageDoctorsBtn">Manage</button>
+          </div>
+          <div class="panel-body" id="doctorsPanelBody">
+            <p>Loading doctor data...</p>
+          </div>
+        </article>
+
+        <article class="panel" id="appointments">
+          <div class="panel-header">
+            <h2>Appointments</h2>
+            <button class="btn btn-ghost" type="button" id="viewAppointmentsBtn">View All</button>
+          </div>
+          <div class="panel-body" id="appointmentsPanelBody">
+            <p>Loading appointments...</p>
+          </div>
+        </article>
+
+        <article class="panel" id="reports">
+          <div class="panel-header">
+            <h2>Reports</h2>
+            <button class="btn btn-primary" type="button" id="reviewReportsBtn">Review</button>
+          </div>
+          <div class="panel-body" id="reportsPanelBody">
+            <p>Loading reports...</p>
+          </div>
+        </article>
+
+        <article class="panel" id="messages">
+          <div class="panel-header">
+            <h2>Messages</h2>
+            <button class="btn btn-primary" type="button" id="openMessagesBtn">Open</button>
+          </div>
+          <div class="panel-body" id="messagesPanelBody">
+            <p>Loading messages...</p>
+          </div>
+        </article>
+
+        <article class="panel" id="alerts">
+          <div class="panel-header">
+            <h2>Alerts</h2>
+          </div>
+          <div class="panel-body" id="alertsPanelBody">
+            <p>Loading alerts...</p>
+          </div>
+        </article>
+      </section>
+    </section>
+  </main>
+
+  <script src="js/session.js"></script>
+  <script src="js/notifications.js"></script>
+  <script src="js/admin-dashboard.js"></script>
+  <script src="js/admin.js"></script>
+  <script src="js/logout.js"></script>
+  <script src="js/settings.js"></script>
+</body>
+</html>

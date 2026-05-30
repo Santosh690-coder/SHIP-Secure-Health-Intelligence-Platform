@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SHIP Doctor Admin</title>
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+  <div class="admin-shell">
+    <aside class="sidebar">
+      <div class="brand">SHIP</div>
+      <nav>
+        <a href="doctor-admin.html" class="active">Dashboard</a>
+        <a href="patient-admin.html">Patients</a>
+        <a href="billing-admin.html">Billing</a>
+        <a href="chat.html?role=doctor">Chat</a>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <h1>Doctor Dashboard</h1>
+          <p id="doctorGreeting">Welcome</p>
+        </div>
+        <button id="logoutBtn">Logout</button>
+      </header>
+
+      <section class="stats">
+        <div class="card"><h3>My Patients</h3><p id="doctorPatientsCount">0</p></div>
+        <div class="card"><h3>Appointments</h3><p id="doctorAppointmentsCount">0</p></div>
+        <div class="card"><h3>Chats</h3><p id="doctorChatsCount">0</p></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <h2>Assigned Patients</h2>
+          <input id="doctorSearch" type="text" placeholder="Search patient..." />
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>DOB</th>
+                <th>Address</th>
+              </tr>
+            </thead>
+            <tbody id="doctorPatientsBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/doctor-admin.js"></script>
+</body>
+</html>

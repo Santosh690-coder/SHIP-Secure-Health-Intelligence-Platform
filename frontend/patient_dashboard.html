@@ -1,0 +1,190 @@
+<<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Patient dashboard for Secure Health Platform." />
+  <meta name="theme-color" content="#0f4c81" />
+  <title>Patient Dashboard | Secure Health Platform</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/patient-dashboard.css" />
+  <link rel="stylesheet" href="css/notifications.css" />
+  <link rel="stylesheet" href="css/ai.css" />
+</head>
+<body>
+  <header class="dashboard-header">
+    <div class="container dashboard-header-inner">
+      <a href="index.html" class="brand" aria-label="Secure Health Platform home">
+        <span class="brand-mark">S</span>
+        <span class="brand-text">
+          <strong>Secure Health</strong>
+          <small>Patient Portal</small>
+        </span>
+      </a>
+
+      <div class="dashboard-user">
+        <div class="user-meta">
+          <strong id="patientName">Loading...</strong>
+          <span id="patientRole">patient</span>
+        </div>
+        <button class="btn btn-ghost" id="patientLogoutBtn" type="button">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="dashboard-shell">
+    <aside class="sidebar">
+      <nav class="sidebar-nav" aria-label="Patient dashboard navigation">
+        <a href="#overview" class="active">Overview</a>
+        <a href="appointments.html">Appointments</a>
+        <a href="prescriptions.html">Prescriptions</a>
+        <a href="reports.html">Reports</a>
+        <a href="health-monitor.html">Health Monitor</a>
+        <a href="messages.html">Messages</a>
+        <a href="settings.html">Settings</a>
+        <button id="patientLogoutBtn" type="button" class="btn btn-ghost">Logout</button>
+        </nav>
+    </aside>
+
+    <section class="dashboard-content">
+      <section class="dashboard-summary" id="overview">
+        <article class="summary-card">
+          <span>Upcoming Appointments</span>
+          <strong id="upcomingAppointmentsCount">--</strong>
+        </article>
+        <article class="summary-card">
+          <span>Active Prescriptions</span>
+          <strong id="activePrescriptionsCount">--</strong>
+        </article>
+        <article class="summary-card">
+          <span>Unread Messages</span>
+          <strong id="unreadMessagesCount">--</strong>
+        </article>
+        <article class="summary-card">
+          <span>New Reports</span>
+          <strong id="newReportsCount">--</strong>
+        </article>
+      </section>
+
+      <section class="panel-grid">
+        <article class="panel" id="appointments">
+          <div class="panel-header">
+            <h2>Appointments</h2>
+            <button class="btn btn-primary" type="button" id="bookAppointmentBtn">Book Appointment</button>
+          </div>
+          <div class="panel-body" id="appointmentsPanelBody">
+            <p>Loading appointments...</p>
+          </div>
+        </article>
+
+        <article class="panel" id="prescriptions">
+          <div class="panel-header">
+            <h2>Prescriptions</h2>
+            <button class="btn btn-ghost" type="button" id="viewPrescriptionsBtn">View All</button>
+          </div>
+          <div class="panel-body" id="prescriptionsPanelBody">
+            <p>Loading prescriptions...</p>
+          </div>
+        </article>
+
+        <article class="panel" id="reports">
+          <div class="panel-header">
+            <h2>Reports</h2>
+            <button class="btn btn-ghost" type="button" id="uploadReportBtn">Upload</button>
+          </div>
+          <div class="panel-body" id="reportsPanelBody">
+            <p>Loading reports...</p>
+          </div>
+        </article>
+
+        <article class="panel" id="monitor">
+          <div class="panel-header">
+            <h2>Health Monitor</h2>
+          </div>
+          <div class="panel-body" id="monitorPanelBody">
+            <p>Loading health data...</p>
+          </div>
+        </article>
+
+        <article class="panel" id="messages">
+          <div class="panel-header">
+            <h2>Messages</h2>
+            <button class="btn btn-primary" type="button" id="newMessageBtn">New Message</button>
+          </div>
+          <div class="panel-body" id="messagesPanelBody">
+            <p>Loading messages...</p>
+          </div>
+        </article>
+
+        <article class="panel" id="settings">
+          <div class="panel-header">
+            <h2>Settings</h2>
+          </div>
+          <div class="panel-body" id="settingsPanelBody">
+            <p>Loading settings...</p>
+          </div>
+        </article>
+
+        <article class="panel" id="ai-assistant">
+          <div class="panel-header">
+            <h2>AI Assistant</h2>
+            <button class="btn btn-primary" type="button" id="openPatientAiBtn">Open Chat</button>
+          </div>
+          <div class="panel-body">
+            <p>Ask health questions, understand portal information, and get guided support.</p>
+
+            <div class="ai-chat-shell" id="patientAiChatShell">
+              <div class="ai-chat-messages" id="patientAiMessages" aria-live="polite"></div>
+
+              <form class="ai-chat-form" id="patientAiForm">
+                <input
+                  type="text"
+                  id="patientAiInput"
+                  placeholder="Type your question..."
+                  autocomplete="off"
+                />
+                <button class="btn btn-primary" type="submit">Send</button>
+              </form>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel" id="xray-analysis">
+          <div class="panel-header">
+            <h2>X-ray Analysis</h2>
+            <button class="btn btn-ghost" type="button" id="analyzeXrayBtn">Analyze</button>
+          </div>
+          <div class="panel-body">
+            <form id="xrayUploadForm" class="xray-upload-form" enctype="multipart/form-data">
+              <label for="xrayFile">Upload X-ray image</label>
+              <input type="file" id="xrayFile" name="xrayFile" accept="image/*,.dcm" />
+
+              <label for="xrayNotes">Doctor notes or symptoms</label>
+              <textarea id="xrayNotes" name="xrayNotes" rows="4" placeholder="Add symptoms, scan type, or concerns..."></textarea>
+
+              <button class="btn btn-primary" type="submit">Submit for Analysis</button>
+            </form>
+
+            <div class="xray-result-box" id="xrayResultBox" aria-live="polite">
+              <p>Upload an image to view the analysis result here.</p>
+            </div>
+          </div>
+        </article>
+      </section>
+    </section>
+  </main>
+
+  <script src="js/session.js"></script>
+  <script src="js/notifications.js"></script>
+  <script src="js/patient-dashboard.js"></script>
+  <script src="js/patient.js"></script>
+  <script src="js/ai.js"></script>
+  <script src="js/logout.js"></script>
+  <script src="js/settings.js"></script>
+</body>
+</html>

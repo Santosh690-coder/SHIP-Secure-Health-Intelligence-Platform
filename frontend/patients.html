@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Doctor patient list for Secure Health Platform." />
+  <meta name="theme-color" content="#0f4c81" />
+  <title>Patients | Secure Health Platform</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/forms.css" />
+  <link rel="stylesheet" href="css/notifications.css" />
+  <link rel="stylesheet" href="css/ai-assistant.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/doctor-dashboard.css" />
+</head>
+<body>
+  <header class="dashboard-header">
+    <div class="container dashboard-header-inner">
+      <a href="doctor_dashboard.html" class="brand" aria-label="Back to doctor dashboard">
+        <span class="brand-mark">S</span>
+        <span class="brand-text">
+          <strong>Secure Health</strong>
+          <small>Doctor Portal</small>
+        </span>
+      </a>
+
+      <div class="dashboard-user">
+        <div class="user-meta">
+          <strong id="doctorName">Loading...</strong>
+          <span id="doctorRole">doctor</span>
+        </div>
+        <button class="btn btn-ghost" id="doctorLogoutBtn" type="button">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="dashboard-shell">
+    <aside class="sidebar">
+      <nav class="sidebar-nav" aria-label="Doctor navigation">
+        <a href="doctor_dashboard.html">Overview</a>
+        <a href="patients.html" class="active">Patients</a>
+        <a href="appointments-doctor.html">Appointments</a>
+        <a href="prescriptions-doctor.html">Prescriptions</a>
+        <a href="reports-doctor.html">Reports</a>
+        <a href="messages-doctor.html">Messages</a>
+        <a href="settings-doctor.html">Settings</a>
+      </nav>
+    </aside>
+
+    <section class="dashboard-content">
+      <section class="panel">
+        <div class="panel-header">
+          <h2>Patients</h2>
+          <button class="btn btn-primary" type="button" id="addPatientBtn">Add Patient Note</button>
+        </div>
+
+        <div class="panel-body">
+          <section class="dashboard-summary">
+            <article class="summary-card">
+              <span>Total Patients</span>
+              <strong id="totalPatientsCount">--</strong>
+            </article>
+            <article class="summary-card">
+              <span>Active Cases</span>
+              <strong id="activeCasesCount">--</strong>
+            </article>
+            <article class="summary-card">
+              <span>Critical Alerts</span>
+              <strong id="criticalAlertsCount">--</strong>
+            </article>
+            <article class="summary-card">
+              <span>Follow-ups Due</span>
+              <strong id="followUpsCount">--</strong>
+            </article>
+          </section>
+
+          <article class="panel">
+            <div class="panel-header">
+              <h2>Search Patients</h2>
+            </div>
+            <div class="panel-body">
+              <form id="patientSearchForm" class="forms-grid">
+                <div class="form-group full-width">
+                  <label for="patientSearchInput">Search by name, ID, phone, or condition</label>
+                  <input type="text" id="patientSearchInput" placeholder="Enter patient details..." />
+                </div>
+                <div class="form-actions full-width">
+                  <button class="btn btn-primary" type="submit">Search</button>
+                  <button class="btn btn-ghost" type="reset">Clear</button>
+                </div>
+              </form>
+            </div>
+          </article>
+
+          <section class="panel-grid">
+            <article class="panel">
+              <div class="panel-header">
+                <h2>Patient List</h2>
+                <button class="btn btn-ghost" type="button" id="refreshPatientsBtn">Refresh</button>
+              </div>
+              <div class="panel-body">
+                <div id="patientsList" class="data-list" aria-live="polite">
+                  <p>Loading patients...</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-header">
+                <h2>Patient Details</h2>
+              </div>
+              <div class="panel-body" id="patientDetails">
+                <p>Select a patient to view details.</p>
+              </div>
+            </article>
+          </section>
+
+          <article class="panel">
+            <div class="panel-header">
+              <h2>Quick Actions</h2>
+            </div>
+            <div class="panel-body">
+              <div class="action-grid">
+                <button class="btn btn-primary" type="button" id="viewAppointmentsBtn">View Appointments</button>
+                <button class="btn btn-ghost" type="button" id="writePrescriptionBtn">Write Prescription</button>
+                <button class="btn btn-ghost" type="button" id="reviewReportsBtn">Review Reports</button>
+                <button class="btn btn-ghost" type="button" id="sendMessageBtn">Send Message</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-header">
+              <h2>AI Assistant</h2>
+              <button class="btn btn-primary" type="button" id="openDoctorAiBtn">Open Chat</button>
+            </div>
+            <div class="panel-body">
+              <p>Ask for patient summary help, note drafting, and clinical workflow support.</p>
+              <div class="ai-chat-shell" id="doctorAiChatShell">
+                <div class="ai-chat-messages" id="doctorAiMessages" aria-live="polite"></div>
+                <form class="ai-chat-form" id="doctorAiForm">
+                  <input type="text" id="doctorAiInput" placeholder="Ask about patients..." autocomplete="off" />
+                  <button class="btn btn-primary" type="submit">Send</button>
+                </form>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="js/session.js"></script>
+  <script src="js/notifications.js"></script>
+  <script src="js/ai.js"></script>
+  <script src="js/patients.js"></script>
+</body>
+</html>

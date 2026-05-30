@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Secure Health Platform — patient, doctor, and admin portal." />
+  <meta name="theme-color" content="#0f4c81" />
+  <title>Secure Health Platform</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/notifications.css" />
+  <link rel="stylesheet" href="css/auth.css" />
+</head>
+<body>
+  <header class="dashboard-header">
+    <div class="container dashboard-header-inner">
+      <a href="index.html" class="brand" aria-label="Secure Health Platform home">
+        <span class="brand-mark">S</span>
+        <span class="brand-text">
+          <strong>Secure Health</strong>
+          <small>Patient • Doctor • Admin</small>
+        </span>
+      </a>
+
+      <nav class="top-nav" aria-label="Main navigation">
+        <a href="#features">Features</a>
+        <a href="#portals">Portals</a>
+        <a href="#access">Access</a>
+      </nav>
+
+      <div class="top-actions">
+        <a href="login.html" class="btn btn-ghost">Login</a>
+        <a href="register.html" class="btn btn-primary">Register</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero-section">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Digital healthcare, simplified</p>
+          <h1>One platform for consultations, prescriptions, reports, and admin control.</h1>
+          <p>Secure Health connects patients, doctors, and administrators in a single streamlined portal.</p>
+
+          <div class="hero-actions">
+            <a href="login.html" class="btn btn-primary">Get Started</a>
+            <a href="#portals" class="btn btn-ghost">Explore Portals</a>
+          </div>
+        </div>
+
+        <div class="hero-card card">
+          <h2>What you can do</h2>
+          <ul class="feature-list" id="features">
+            <li>Book and manage appointments.</li>
+            <li>Access reports, prescriptions, and medical notes.</li>
+            <li>Start secure doctor and patient communication.</li>
+            <li>Use role-based dashboards for fast workflow access.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block">
+      <div class="container">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow">Platform overview</p>
+            <h2 id="portals">Portals built for each role</h2>
+          </div>
+        </div>
+
+        <div class="portal-grid">
+          <article class="portal-card card">
+            <h3>Patient Portal</h3>
+            <p>View appointments, prescriptions, reports, health trends, and messages in one place.</p>
+            <a href="login.html" class="link-action">Open patient access</a>
+          </article>
+
+          <article class="portal-card card">
+            <h3>Doctor Portal</h3>
+            <p>Review patients, manage consultations, write prescriptions, and check reports quickly.</p>
+            <a href="login.html" class="link-action">Open doctor access</a>
+          </article>
+
+          <article class="portal-card card">
+            <h3>Admin Portal</h3>
+            <p>Manage users, appointments, billing, reports, and operational dashboards securely.</p>
+            <a href="login.html" class="link-action">Open admin access</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block access-section" id="access">
+      <div class="container access-grid">
+        <div class="card access-card">
+          <p class="eyebrow">Fast entry</p>
+          <h2>Login or register in seconds</h2>
+          <p>Choose your role, create an account, and you’ll be routed to the right dashboard automatically.</p>
+          <div class="hero-actions">
+            <a href="login.html" class="btn btn-primary">Login</a>
+            <a href="register.html" class="btn btn-ghost">Register</a>
+          </div>
+        </div>
+
+        <div class="card access-card">
+          <p class="eyebrow">Trusted workflow</p>
+          <h2>Designed for real healthcare operations</h2>
+          <p>The layout supports secure communication, document sharing, role access, and dashboard-based management.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; 2026 Secure Health Platform. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="login.html">Login</a>
+        <a href="register.html">Register</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/notifications.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

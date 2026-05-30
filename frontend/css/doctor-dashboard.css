@@ -1,0 +1,240 @@
+/* doctor-dashboard.css */
+.dashboard-header {
+  position: sticky;
+  top: 0;
+  z-index: 90;
+  background: rgba(215, 179, 179, 0.94);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(217,228,239,.9);
+}
+
+.dashboard-header-inner {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.dashboard-user {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user-meta {
+  display: grid;
+  gap: .1rem;
+  text-align: right;
+}
+
+.user-meta strong {
+  font-size: 1rem;
+}
+
+.user-meta span {
+  color: var(--muted);
+  font-size: .9rem;
+}
+
+.dashboard-shell {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  min-height: calc(100vh - 76px);
+}
+
+.sidebar {
+  position: sticky;
+  top: 76px;
+  align-self: start;
+  height: calc(100vh - 76px);
+  padding: 1.25rem;
+  background: #fff;
+  border-right: 1px solid rgba(217,228,239,.9);
+  overflow-y: auto;
+}
+
+.sidebar-nav {
+  display: grid;
+  gap: .4rem;
+}
+
+.sidebar-nav a {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  padding: .8rem 1rem;
+  border-radius: 14px;
+  color: var(--muted);
+  font-weight: 600;
+  transition: background .18s ease, color .18s ease, transform .18s ease;
+}
+
+.sidebar-nav a:hover {
+  background: rgba(15,76,129,.06);
+  color: var(--primary);
+}
+
+.sidebar-nav a.active {
+  background: var(--primary);
+  color: #fff;
+  box-shadow: 0 10px 20px rgba(15,76,129,.18);
+}
+
+.dashboard-content {
+  padding: 1.5rem;
+}
+
+.dashboard-summary {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.summary-card {
+  padding: 1.2rem;
+  background: #fff;
+  border: 1px solid rgba(217,228,239,.95);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.summary-card span {
+  display: block;
+  margin-bottom: .45rem;
+  color: var(--muted);
+  font-size: .92rem;
+}
+
+.summary-card strong {
+  font-size: 1.45rem;
+  line-height: 1.1;
+}
+
+.panel-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.panel {
+  background: #fff;
+  border: 1px solid rgba(217,228,239,.95);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.25rem;
+  min-height: 220px;
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.panel-header h2 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.panel-body p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.appointment-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.appointment-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 16px;
+  background: #f7fafc;
+  border: 1px solid #e5edf5;
+}
+
+.appointment-item strong {
+  display: block;
+  margin-bottom: .25rem;
+}
+
+.appointment-item p {
+  margin: 0;
+  color: var(--muted);
+  font-size: .93rem;
+}
+
+.appointment-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem;
+}
+
+.appointment-history {
+  padding: 1rem;
+  border-radius: 16px;
+  background: rgba(15,76,129,.05);
+  border: 1px solid rgba(15,76,129,.10);
+}
+
+.appointment-history h3 {
+  margin: 0 0 .5rem;
+  font-size: 1rem;
+}
+
+.appointment-history p {
+  margin: 0;
+  color: var(--muted);
+}
+
+@media (max-width: 1080px) {
+  .dashboard-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: static;
+    height: auto;
+    border-right: 0;
+    border-bottom: 1px solid rgba(217,228,239,.9);
+  }
+
+  .dashboard-summary,
+  .panel-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .dashboard-summary,
+  .panel-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .appointment-item,
+  .dashboard-header-inner,
+  .dashboard-user {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .user-meta {
+    text-align: left;
+  }
+
+  .dashboard-content {
+    padding: 1rem;
+  }
+
+  .sidebar {
+    padding: 1rem;
+  }
+}

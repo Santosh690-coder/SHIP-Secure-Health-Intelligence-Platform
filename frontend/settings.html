@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="SHIP settings" />
+  <title>SHIP | Settings</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/settings.css">
+</head>
+<body class="dashboard-page">
+  <div class="dashboard-shell">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-mark">S</div>
+        <div>
+          <h2>SHIP</h2>
+          <p>Settings</p>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="patient_dashboard.html">Patient Dashboard</a>
+        <a href="doctor_dashboard.html">Doctor Dashboard</a>
+        <a class="active" href="settings.html">Settings</a>
+        <a href="#" id="settings-logout">Logout</a>
+      </nav>
+    </aside>
+
+    <main class="dashboard-main">
+      <header class="dashboard-header">
+        <div>
+          <p class="eyebrow">Account settings</p>
+          <h1>Manage your profile</h1>
+        </div>
+      </header>
+
+      <section class="card settings-card">
+        <form id="settings-form" class="settings-form">
+          <div class="grid-2">
+            <div class="field">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" required>
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" required>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="field">
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" type="tel">
+            </div>
+            <div class="field">
+              <label for="address">Address</label>
+              <input id="address" name="address" type="text">
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="field">
+              <label for="theme-preference">Light theme</label>
+              <input id="theme-preference" type="checkbox">
+            </div>
+            <div class="field">
+              <label for="notif-toggle">Notifications enabled</label>
+              <input id="notif-toggle" type="checkbox">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="current-password">Change password</label>
+            <input id="current-password" type="password" placeholder="Enter current password">
+          </div>
+
+          <button type="submit" class="btn btn-primary">Save Settings</button>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/settings.js"></script>
+</body>
+</html>

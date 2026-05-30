@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Secure Health Platform registration page." />
+  <meta name="theme-color" content="#0f4c81" />
+  <title>Register | Secure Health Platform</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/forms.css" />
+  <link rel="stylesheet" href="css/auth.css" />
+  <link rel="stylesheet" href="css/notifications.css" />
+  <link rel="stylesheet" href="css/validation.css" />
+</head>
+<body>
+  <main class="auth-page">
+    <section class="auth-branding">
+      <a href="index.html" class="brand" aria-label="Secure Health Platform home">
+        <span class="brand-mark">S</span>
+        <span class="brand-text">
+          <strong>Secure Health</strong>
+          <small>Patient • Doctor • Admin</small>
+        </span>
+      </a>
+
+      <div class="hero-copy">
+        <p class="eyebrow">Join the portal</p>
+        <h1>Create your secure healthcare account in a few steps.</h1>
+        <p>Register as a patient, doctor, or admin to access your dedicated dashboard.</p>
+      </div>
+
+      <ul class="auth-features" aria-label="Platform features">
+        <li>Role-based account setup</li>
+        <li>Secure dashboard access</li>
+        <li>Reports, appointments, and care workflow support</li>
+      </ul>
+    </section>
+
+    <section class="auth-panel">
+      <div class="auth-panel-inner">
+        <div class="form-shell">
+          <div class="form-card">
+            <h2>Create account</h2>
+            <p>Fill in your details to get started.</p>
+
+            <form id="registerForm" class="form" novalidate>
+              <div class="field-group">
+                <label for="role">Role</label>
+                <select id="role" name="role" required>
+                  <option value="">Select role</option>
+                  <option value="patient">Patient</option>
+                  <option value="doctor">Doctor</option>
+                  <option value="admin">Admin</option>
+                </select>
+                <small class="error-message">Please select a role.</small>
+              </div>
+
+              <div class="field-group">
+                <label for="fullName">Full Name</label>
+                <input id="fullName" name="fullName" type="text" placeholder="Enter your full name" required />
+                <small class="error-message">Please enter your name.</small>
+              </div>
+
+              <div class="field-group">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="you@example.com" required />
+                <small class="error-message">Please enter a valid email.</small>
+              </div>
+
+              <div class="field-group">
+                <label for="phone">Phone Number</label>
+                <input id="phone" name="phone" type="tel" placeholder="+91 98765 43210" required />
+                <small class="error-message">Please enter a valid phone number.</small>
+              </div>
+
+              <div class="field-group">
+                <label for="password">Password</label>
+                <input id="password" name="password" type="password" placeholder="Create a password" required />
+                <small class="error-message">Password must be at least 6 characters.</small>
+              </div>
+
+              <div class="field-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input id="confirmPassword" name="confirmPassword" type="password" placeholder="Re-enter password" required />
+                <small class="error-message">Passwords do not match.</small>
+              </div>
+
+              <label class="checkbox-row">
+                <input type="checkbox" name="agree" required />
+                <span>I agree to the Terms of Service and Privacy Policy.</span>
+              </label>
+
+              <button type="submit" class="btn btn-primary">Register</button>
+            </form>
+
+            <div class="auth-toggle">
+              <span>Already have an account?</span>
+              <a href="login.html">Login</a>
+            </div>
+
+            <div class="auth-note">
+              After registration, you’ll be sent to the correct portal based on the role you selected.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/notifications.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/forms.js"></script>
+  <script src="js/session.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

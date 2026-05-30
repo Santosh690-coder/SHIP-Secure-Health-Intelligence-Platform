@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Patient reports for Secure Health Platform." />
+  <meta name="theme-color" content="#0f4c81" />
+  <title>Reports | Secure Health Platform</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/forms.css" />
+  <link rel="stylesheet" href="css/notifications.css" />
+  <link rel="stylesheet" href="css/ai-assistant.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/patient-dashboard.css" />
+</head>
+<body>
+  <header class="dashboard-header">
+    <div class="container dashboard-header-inner">
+      <a href="patient_dashboard.html" class="brand" aria-label="Back to patient dashboard">
+        <span class="brand-mark">S</span>
+        <span class="brand-text">
+          <strong>Secure Health</strong>
+          <small>Patient Portal</small>
+        </span>
+      </a>
+
+      <div class="dashboard-user">
+        <div class="user-meta">
+          <strong id="patientName">Loading...</strong>
+          <span id="patientRole">patient</span>
+        </div>
+        <button class="btn btn-ghost" id="patientLogoutBtn" type="button">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="dashboard-shell">
+    <aside class="sidebar">
+      <nav class="sidebar-nav" aria-label="Patient navigation">
+        <a href="patient_dashboard.html">Overview</a>
+        <a href="appointments.html">Appointments</a>
+        <a href="prescriptions.html">Prescriptions</a>
+        <a href="reports.html" class="active">Reports</a>
+        <a href="health-monitor.html">Health Monitor</a>
+        <a href="messages.html">Messages</a>
+        <a href="settings.html">Settings</a>
+      </nav>
+    </aside>
+
+    <section class="dashboard-content">
+      <section class="panel">
+        <div class="panel-header">
+          <h2>Reports</h2>
+          <button class="btn btn-primary" type="button" id="uploadReportBtn">Upload Report</button>
+        </div>
+
+        <div class="panel-body">
+          <section class="dashboard-summary">
+            <article class="summary-card">
+              <span>Total Reports</span>
+              <strong id="totalReportsCount">--</strong>
+            </article>
+            <article class="summary-card">
+              <span>New</span>
+              <strong id="newReportsCount">--</strong>
+            </article>
+            <article class="summary-card">
+              <span>Reviewed</span>
+              <strong id="reviewedReportsCount">--</strong>
+            </article>
+            <article class="summary-card">
+              <span>Archived</span>
+              <strong id="archivedReportsCount">--</strong>
+            </article>
+          </section>
+
+          <section class="panel-grid">
+            <article class="panel">
+              <div class="panel-header">
+                <h2>Report List</h2>
+                <button class="btn btn-ghost" type="button" id="refreshReportsBtn">Refresh</button>
+              </div>
+              <div class="panel-body">
+                <div id="reportsList" class="data-list" aria-live="polite">
+                  <p>Loading reports...</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-header">
+                <h2>Report Details</h2>
+              </div>
+              <div class="panel-body" id="reportDetails">
+                <p>Select a report to view details.</p>
+              </div>
+            </article>
+          </section>
+
+          <article class="panel">
+            <div class="panel-header">
+              <h2>Upload Report</h2>
+            </div>
+            <div class="panel-body">
+              <form id="reportUploadForm" class="forms-grid" enctype="multipart/form-data">
+                <div class="form-group">
+                  <label for="reportTitle">Report Title</label>
+                  <input type="text" id="reportTitle" name="title" placeholder="e.g. Blood Test Result" required />
+                </div>
+
+                <div class="form-group">
+                  <label for="reportType">Report Type</label>
+                  <select id="reportType" name="type" required>
+                    <option value="lab">Lab Report</option>
+                    <option value="scan">Scan / Imaging</option>
+                    <option value="prescription">Prescription</option>
+                    <option value="discharge">Discharge Summary</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+
+                <div class="form-group full-width">
+                  <label for="reportFile">Choose File</label>
+                  <input type="file" id="reportFile" name="reportFile" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.dcm" required />
+                </div>
+
+                <div class="form-group full-width">
+                  <label for="reportNotes">Notes</label>
+                  <textarea id="reportNotes" name="notes" rows="4" placeholder="Add any context or doctor instructions"></textarea>
+                </div>
+
+                <div class="form-actions full-width">
+                  <button class="btn btn-primary" type="submit">Submit Report</button>
+                  <button class="btn btn-ghost" type="reset">Clear</button>
+                </div>
+              </form>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-header">
+              <h2>AI Assistant</h2>
+              <button class="btn btn-primary" type="button" id="openPatientAiBtn">Open Chat</button>
+            </div>
+            <div class="panel-body">
+              <p>Ask about report meanings, lab terms, and how to prepare for follow-up visits.</p>
+              <div class="ai-chat-shell" id="patientAiChatShell">
+                <div class="ai-chat-messages" id="patientAiMessages" aria-live="polite"></div>
+                <form class="ai-chat-form" id="patientAiForm">
+                  <input type="text" id="patientAiInput" placeholder="Ask about reports..." autocomplete="off" />
+                  <button class="btn btn-primary" type="submit">Send</button>
+                </form>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="js/session.js"></script>
+  <script src="js/notifications.js"></script>
+  <script src="js/ai.js"></script>
+  <script src="js/reports.js"></script>
+</body>
+</html>

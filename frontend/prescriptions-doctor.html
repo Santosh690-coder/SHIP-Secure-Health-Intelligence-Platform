@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Doctor prescriptions for Secure Health Platform." />
+  <meta name="theme-color" content="#0f4c81" />
+  <title>Prescriptions | Secure Health Platform</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/forms.css" />
+  <link rel="stylesheet" href="css/notifications.css" />
+  <link rel="stylesheet" href="css/ai-assistant.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/doctor-dashboard.css" />
+</head>
+<body>
+  <header class="dashboard-header">
+    <div class="container dashboard-header-inner">
+      <a href="doctor_dashboard.html" class="brand" aria-label="Back to doctor dashboard">
+        <span class="brand-mark">S</span>
+        <span class="brand-text">
+          <strong>Secure Health</strong>
+          <small>Doctor Portal</small>
+        </span>
+      </a>
+
+      <div class="dashboard-user">
+        <div class="user-meta">
+          <strong id="doctorName">Loading...</strong>
+          <span id="doctorRole">doctor</span>
+        </div>
+        <button class="btn btn-ghost" id="doctorLogoutBtn" type="button">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="dashboard-shell">
+    <aside class="sidebar">
+      <nav class="sidebar-nav" aria-label="Doctor navigation">
+        <a href="doctor_dashboard.html">Overview</a>
+        <a href="patients.html">Patients</a>
+        <a href="appointments-doctor.html">Appointments</a>
+        <a href="prescriptions-doctor.html" class="active">Prescriptions</a>
+        <a href="reports-doctor.html">Reports</a>
+        <a href="messages-doctor.html">Messages</a>
+        <a href="settings-doctor.html">Settings</a>
+      </nav>
+    </aside>
+
+    <section class="dashboard-content">
+      <section class="panel">
+        <div class="panel-header">
+          <h2>Prescriptions</h2>
+          <button class="btn btn-primary" type="button" id="newPrescriptionBtn">New Prescription</button>
+        </div>
+
+        <div class="panel-body">
+          <section class="dashboard-summary">
+            <article class="summary-card">
+              <span>Active</span>
+              <strong id="activePrescriptionsCount">--</strong>
+            </article>
+            <article class="summary-card">
+              <span>Pending Review</span>
+              <strong id="pendingReviewCount">--</strong>
+            </article>
+            <article class="summary-card">
+              <span>Refill Requests</span>
+              <strong id="refillRequestsCount">--</strong>
+            </article>
+            <article class="summary-card">
+              <span>Completed</span>
+              <strong id="completedPrescriptionsCount">--</strong>
+            </article>
+          </section>
+
+          <section class="panel-grid">
+            <article class="panel">
+              <div class="panel-header">
+                <h2>Prescription List</h2>
+                <button class="btn btn-ghost" type="button" id="refreshPrescriptionsBtn">Refresh</button>
+              </div>
+              <div class="panel-body">
+                <div id="doctorPrescriptionsList" class="data-list" aria-live="polite">
+                  <p>Loading prescriptions...</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-header">
+                <h2>Prescription Details</h2>
+              </div>
+              <div class="panel-body" id="doctorPrescriptionDetails">
+                <p>Select a prescription to view details.</p>
+              </div>
+            </article>
+          </section>
+
+          <article class="panel">
+            <div class="panel-header">
+              <h2>Write Prescription</h2>
+            </div>
+            <div class="panel-body">
+              <form id="prescriptionForm" class="forms-grid">
+                <div class="form-group">
+                  <label for="prescriptionPatient">Patient</label>
+                  <select id="prescriptionPatient" name="patientId" required>
+                    <option value="">Loading patients...</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="prescriptionMedicine">Medicine</label>
+                  <input type="text" id="prescriptionMedicine" name="medicine" placeholder="Medicine name" required />
+                </div>
+
+                <div class="form-group">
+                  <label for="prescriptionDosage">Dosage</label>
+                  <input type="text" id="prescriptionDosage" name="dosage" placeholder="e.g. 1 tablet twice daily" required />
+                </div>
+
+                <div class="form-group">
+                  <label for="prescriptionDuration">Duration</label>
+                  <input type="text" id="prescriptionDuration" name="duration" placeholder="e.g. 7 days" required />
+                </div>
+
+                <div class="form-group full-width">
+                  <label for="prescriptionInstructions">Instructions</label>
+                  <textarea id="prescriptionInstructions" name="instructions" rows="4" placeholder="Add special instructions"></textarea>
+                </div>
+
+                <div class="form-actions full-width">
+                  <button class="btn btn-primary" type="submit">Save Prescription</button>
+                  <button class="btn btn-ghost" type="reset">Clear</button>
+                </div>
+              </form>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-header">
+              <h2>Refill Requests</h2>
+            </div>
+            <div class="panel-body">
+              <div id="refillRequestsList" class="data-list" aria-live="polite">
+                <p>Loading refill requests...</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-header">
+              <h2>AI Assistant</h2>
+              <button class="btn btn-primary" type="button" id="openDoctorAiBtn">Open Chat</button>
+            </div>
+            <div class="panel-body">
+              <p>Ask for prescription drafting help, dosage formatting, and medication workflow support.</p>
+              <div class="ai-chat-shell" id="doctorAiChatShell">
+                <div class="ai-chat-messages" id="doctorAiMessages" aria-live="polite"></div>
+                <form class="ai-chat-form" id="doctorAiForm">
+                  <input type="text" id="doctorAiInput" placeholder="Ask about prescriptions..." autocomplete="off" />
+                  <button class="btn btn-primary" type="submit">Send</button>
+                </form>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="js/session.js"></script>
+  <script src="js/notifications.js"></script>
+  <script src="js/ai.js"></script>
+  <script src="js/prescriptions-doctor.js"></script>
+</body>
+</html>

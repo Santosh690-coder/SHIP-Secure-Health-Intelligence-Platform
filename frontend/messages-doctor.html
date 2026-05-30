@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Doctor messages for Secure Health Platform." />
+  <meta name="theme-color" content="#0f4c81" />
+  <title>Messages | Secure Health Platform</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/forms.css" />
+  <link rel="stylesheet" href="css/notifications.css" />
+  <link rel="stylesheet" href="css/ai-assistant.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/doctor-dashboard.css" />
+</head>
+<body>
+  <header class="dashboard-header">
+    <div class="container dashboard-header-inner">
+      <a href="doctor_dashboard.html" class="brand" aria-label="Back to doctor dashboard">
+        <span class="brand-mark">S</span>
+        <span class="brand-text">
+          <strong>Secure Health</strong>
+          <small>Doctor Portal</small>
+        </span>
+      </a>
+
+      <div class="dashboard-user">
+        <div class="user-meta">
+          <strong id="doctorName">Doctor</strong>
+          <span id="doctorRole">doctor</span>
+        </div>
+        <button class="btn btn-ghost" id="doctorLogoutBtn" type="button">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="dashboard-shell">
+    <aside class="sidebar">
+      <nav class="sidebar-nav" aria-label="Doctor navigation">
+        <a href="doctor_dashboard.html">Overview</a>
+        <a href="patients.html">Patients</a>
+        <a href="appointments-doctor.html">Appointments</a>
+        <a href="prescriptions-doctor.html">Prescriptions</a>
+        <a href="reports-doctor.html">Reports</a>
+        <a href="messages-doctor.html" class="active">Messages</a>
+        <a href="settings-doctor.html">Settings</a>
+      </nav>
+    </aside>
+
+    <section class="dashboard-content">
+      <section class="panel">
+        <div class="panel-header">
+          <h2>Messages</h2>
+          <button class="btn btn-primary" type="button" id="newMessageBtn">New Message</button>
+        </div>
+
+        <div class="panel-body">
+          <section class="dashboard-summary">
+            <article class="summary-card">
+              <span>Unread</span>
+              <strong id="unreadMessagesCount">0</strong>
+            </article>
+            <article class="summary-card">
+              <span>Today</span>
+              <strong id="todayMessagesCount">0</strong>
+            </article>
+            <article class="summary-card">
+              <span>Patients</span>
+              <strong id="patientThreadsCount">0</strong>
+            </article>
+            <article class="summary-card">
+              <span>Staff</span>
+              <strong id="staffThreadsCount">0</strong>
+            </article>
+          </section>
+
+          <article class="panel">
+            <div class="panel-header">
+              <h2>Search Inbox</h2>
+            </div>
+            <div class="panel-body">
+              <form id="messageSearchForm" class="forms-grid">
+                <div class="form-group full-width">
+                  <label for="messageSearchInput">Search by patient, subject, or thread</label>
+                  <input type="text" id="messageSearchInput" placeholder="Search messages..." />
+                </div>
+                <div class="form-actions full-width">
+                  <button class="btn btn-primary" type="submit">Search</button>
+                  <button class="btn btn-ghost" type="reset">Clear</button>
+                </div>
+              </form>
+            </div>
+          </article>
+
+          <section class="panel-grid">
+            <article class="panel">
+              <div class="panel-header">
+                <h2>Inbox</h2>
+                <button class="btn btn-ghost" type="button" id="refreshMessagesBtn">Refresh</button>
+              </div>
+              <div class="panel-body">
+                <div id="doctorThreadsList" class="data-list" aria-live="polite">
+                  <p>Loading conversations...</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-header">
+                <h2>Conversation</h2>
+              </div>
+              <div class="panel-body">
+                <div id="doctorThreadDetails" class="thread-panel">
+                  <p>Select a conversation to view messages.</p>
+                </div>
+              </div>
+            </article>
+          </section>
+
+          <article class="panel">
+            <div class="panel-header">
+              <h2>Compose Message</h2>
+            </div>
+            <div class="panel-body">
+              <form id="doctorMessageForm" class="forms-grid">
+                <div class="form-group">
+                  <label for="messageRecipientType">Recipient Type</label>
+                  <select id="messageRecipientType" required>
+                    <option value="patient">Patient</option>
+                    <option value="staff">Staff</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="messageRecipient">Recipient</label>
+                  <select id="messageRecipient" required>
+                    <option value="">Loading recipients...</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="messageSubject">Subject</label>
+                  <input type="text" id="messageSubject" placeholder="Message subject" required />
+                </div>
+
+                <div class="form-group full-width">
+                  <label for="messageBody">Message</label>
+                  <textarea id="messageBody" rows="5" placeholder="Write your message..." required></textarea>
+                </div>
+
+                <div class="form-actions full-width">
+                  <button class="btn btn-primary" type="submit">Send Message</button>
+                  <button class="btn btn-ghost" type="reset">Clear</button>
+                </div>
+              </form>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-header">
+              <h2>AI Assistant</h2>
+              <button class="btn btn-primary" type="button" id="openDoctorAiBtn">Open Chat</button>
+            </div>
+            <div class="panel-body">
+              <p>Draft responses, summarize threads, and manage communication faster.</p>
+              <div class="ai-chat-shell" id="doctorAiChatShell">
+                <div class="ai-chat-messages" id="doctorAiMessages" aria-live="polite"></div>
+                <form class="ai-chat-form" id="doctorAiForm">
+                  <input type="text" id="doctorAiInput" placeholder="Ask about messages..." autocomplete="off" />
+                  <button class="btn btn-primary" type="submit">Send</button>
+                </form>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="js/session.js"></script>
+  <script src="js/notifications.js"></script>
+  <script src="js/ai.js"></script>
+  <script src="js/messages-doctor.js"></script>
+</body>
+</html>

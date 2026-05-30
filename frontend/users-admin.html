@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Admin user management for Secure Health Platform." />
+  <meta name="theme-color" content="#0f4c81" />
+  <title>Users | Secure Health Platform</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/forms.css" />
+  <link rel="stylesheet" href="css/notifications.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/admin-dashboard.css" />
+</head>
+<body>
+  <header class="dashboard-header">
+    <div class="container dashboard-header-inner">
+      <a href="admin_dashboard.html" class="brand" aria-label="Back to admin dashboard">
+        <span class="brand-mark">S</span>
+        <span class="brand-text">
+          <strong>Secure Health</strong>
+          <small>Admin Portal</small>
+        </span>
+      </a>
+
+      <div class="dashboard-user">
+        <div class="user-meta">
+          <strong id="adminName">Admin</strong>
+          <span id="adminRole">admin</span>
+        </div>
+        <button class="btn btn-ghost" id="adminLogoutBtn" type="button">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="dashboard-shell">
+    <aside class="sidebar">
+      <nav class="sidebar-nav" aria-label="Admin navigation">
+        <a href="admin_dashboard.html">Overview</a>
+        <a href="patients-admin.html">Patients</a>
+        <a href="doctors-admin.html">Doctors</a>
+        <a href="appointments-admin.html">Appointments</a>
+        <a href="reports-admin.html">Reports</a>
+        <a href="users-admin.html" class="active">Users</a>
+        <a href="settings.html">Settings</a>
+      </nav>
+    </aside>
+
+    <section class="dashboard-content">
+      <section class="panel">
+        <div class="panel-header">
+          <h2>User Management</h2>
+          <button class="btn btn-primary" type="button" id="refreshUsersBtn">Refresh</button>
+        </div>
+
+        <div class="panel-body">
+          <section class="dashboard-summary">
+            <article class="summary-card">
+              <span>Total Users</span>
+              <strong id="totalUsersCount">0</strong>
+            </article>
+            <article class="summary-card">
+              <span>Admins</span>
+              <strong id="adminUsersCount">0</strong>
+            </article>
+            <article class="summary-card">
+              <span>Active</span>
+              <strong id="activeUsersCount">0</strong>
+            </article>
+            <article class="summary-card">
+              <span>Disabled</span>
+              <strong id="disabledUsersCount">0</strong>
+            </article>
+          </section>
+
+          <article class="panel">
+            <div class="panel-header">
+              <h2>Filter Users</h2>
+            </div>
+            <div class="panel-body">
+              <form id="usersFilterForm" class="forms-grid">
+                <div class="form-group">
+                  <label for="userSearch">Search</label>
+                  <input type="text" id="userSearch" placeholder="Search name or email..." />
+                </div>
+
+                <div class="form-group">
+                  <label for="userRoleFilter">Role</label>
+                  <select id="userRoleFilter">
+                    <option value="">All Roles</option>
+                    <option value="admin">Admin</option>
+                    <option value="staff">Staff</option>
+                    <option value="doctor">Doctor</option>
+                    <option value="patient">Patient</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="userStatusFilter">Status</label>
+                  <select id="userStatusFilter">
+                    <option value="">All Status</option>
+                    <option value="active">Active</option>
+                    <option value="disabled">Disabled</option>
+                    <option value="pending">Pending</option>
+                  </select>
+                </div>
+
+                <div class="form-actions full-width">
+                  <button class="btn btn-primary" type="submit">Apply</button>
+                  <button class="btn btn-ghost" type="reset">Clear</button>
+                </div>
+              </form>
+            </div>
+          </article>
+
+          <section class="panel-grid">
+            <article class="panel">
+              <div class="panel-header">
+                <h2>Users</h2>
+              </div>
+              <div class="panel-body">
+                <div id="usersList" class="data-list" aria-live="polite">
+                  <p>Loading users...</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-header">
+                <h2>Edit User</h2>
+              </div>
+              <div class="panel-body">
+                <form id="userEditForm" class="forms-grid">
+                  <input type="hidden" id="editUserId" />
+
+                  <div class="form-group">
+                    <label for="editUserName">Name</label>
+                    <input type="text" id="editUserName" required />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="editUserEmail">Email</label>
+                    <input type="email" id="editUserEmail" required />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="editUserRole">Role</label>
+                    <select id="editUserRole" required>
+                      <option value="admin">Admin</option>
+                      <option value="staff">Staff</option>
+                      <option value="doctor">Doctor</option>
+                      <option value="patient">Patient</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="editUserStatus">Status</label>
+                    <select id="editUserStatus" required>
+                      <option value="active">Active</option>
+                      <option value="disabled">Disabled</option>
+                      <option value="pending">Pending</option>
+                    </select>
+                  </div>
+
+                  <div class="form-actions full-width">
+                    <button class="btn btn-primary" type="submit">Save Changes</button>
+                    <button class="btn btn-ghost" type="button" id="clearEditBtn">Clear</button>
+                  </div>
+                </form>
+              </div>
+            </article>
+          </section>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="js/session.js"></script>
+  <script src="js/notifications.js"></script>
+  <script src="js/users-admin.js"></script>
+</body>
+</html>

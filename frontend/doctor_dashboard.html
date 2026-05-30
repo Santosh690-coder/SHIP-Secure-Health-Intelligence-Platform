@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Doctor dashboard for Secure Health Platform." />
+  <meta name="theme-color" content="#0f4c81" />
+  <title>Doctor Dashboard | Secure Health Platform</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/doctor-dashboard.css" />
+  <link rel="stylesheet" href="css/notifications.css" />
+  <link rel="stylesheet" href="css/ai.css" />
+</head>
+<body>
+  <header class="dashboard-header">
+    <div class="container dashboard-header-inner">
+      <a href="index.html" class="brand" aria-label="Secure Health Platform home">
+        <span class="brand-mark">S</span>
+        <span class="brand-text">
+          <strong>Secure Health</strong>
+          <small>Doctor Portal</small>
+        </span>
+      </a>
+
+      <div class="dashboard-user">
+        <div class="user-meta">
+          <strong id="doctorName">Loading...</strong>
+          <span id="doctorRole">doctor</span>
+        </div>
+        <button class="btn btn-ghost" id="doctorLogoutBtn" type="button">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="dashboard-shell">
+    <aside class="sidebar">
+      <nav class="sidebar-nav" aria-label="Doctor dashboard navigation">
+        <a href="#overview" class="active">Overview</a>
+        <a href="patients.html">Patients</a>
+        <a href="appointments-doctor.html">Appointments</a>
+        <a href="prescriptions-doctor.html">Prescriptions</a>
+        <a href="reports-doctor.html">Reports</a>
+        <a href="messages-doctor.html">Messages</a>
+        <a href="settings.html">Settings</a>
+        <button id="doctorLogoutBtn" type="button" class="btn btn-ghost">Logout</button>
+      </nav>
+    </aside>
+
+    <section class="dashboard-content">
+      <section class="dashboard-summary" id="overview">
+        <article class="summary-card">
+          <span>Assigned Patients</span>
+          <strong id="assignedPatientsCount">--</strong>
+        </article>
+        <article class="summary-card">
+          <span>Today’s Consultations</span>
+          <strong id="todaysConsultationsCount">--</strong>
+        </article>
+        <article class="summary-card">
+          <span>Pending Reports</span>
+          <strong id="pendingReportsCount">--</strong>
+        </article>ass="summary-card">
+          <span>Unread Messages</span>
+          <strong id="unreadMessagesCount">--</strong>
+        </article>
+      </section>
+
+      <section class="panel-grid">
+        <article class="panel" id="patients">
+          <div class="panel-header">
+            <h2>Patients</h2>
+            <button class="btn btn-primary" type="button" id="addNoteBtn">Add Note</button>
+          </div>
+          <div class="panel-body" id="patientsPanelBody">
+            <p>Loading patients...</p>
+          </div>
+        </article>
+
+        <article class="panel" id="appointments">
+          <div class="panel-header">
+            <h2>Appointments</h2>
+            <button class="btn btn-ghost" type="button" id="viewScheduleBtn">View Schedule</button>
+          </div>
+          <div class="panel-body" id="appointmentsPanelBody">
+            <p>Loading appointments...</p>
+          </div>
+        </article>
+
+        <article class="panel" id="prescriptions">
+          <div class="panel-header">
+            <h2>Prescriptions</h2>
+            <button class="btn btn-primary" type="button" id="writePrescriptionBtn">Write Prescription</button>
+          </div>
+          <div class="panel-body" id="prescriptionsPanelBody">
+            <p>Loading prescriptions...</p>
+          </div>
+        </article>
+
+        <article class="panel" id="reports">
+          <div class="panel-header">
+            <h2>Reports</h2>
+            <button class="btn btn-ghost" type="button" id="reviewReportsBtn">Review</button>
+          </div>
+          <div class="panel-body" id="reportsPanelBody">
+            <p>Loading reports...</p>
+          </div>
+        </article>
+
+        <article class="panel" id="messages">
+          <div class="panel-header">
+            <h2>Messages</h2>
+            <button class="btn btn-primary" type="button" id="replyMessageBtn">New Reply</button>
+          </div>
+          <div class="panel-body" id="messagesPanelBody">
+            <p>Loading messages...</p>
+          </div>
+        </article>
+
+        <article class="panel" id="settings">
+          <div class="panel-header">
+            <h2>Settings</h2>
+          </div>
+          <div class="panel-body" id="settingsPanelBody">
+            <p>Loading settings...</p>
+          </div>
+        </article>
+
+        <article class="panel" id="doctor-ai-assistant">
+          <div class="panel-header">
+            <h2>AI Assistant</h2>
+            <button class="btn btn-primary" type="button" id="openDoctorAiBtn">Open Chat</button>
+          </div>
+          <div class="panel-body">
+            <p>Ask for clinical workflow help, patient summary support, and portal guidance.</p>
+
+            <div class="ai-chat-shell" id="doctorAiChatShell">
+              <div class="ai-chat-messages" id="doctorAiMessages" aria-live="polite"></div>
+
+              <form class="ai-chat-form" id="doctorAiForm">
+                <input
+                  type="text"
+                  id="doctorAiInput"
+                  placeholder="Type your question..."
+                  autocomplete="off"
+                />
+                <button class="btn btn-primary" type="submit">Send</button>
+              </form>
+            </div>
+          </div>
+        </article>
+      </section>
+    </section>
+  </main>
+
+  <script src="js/session.js"></script>
+  <script src="js/notifications.js"></script>
+  <script src="js/doctor-dashboard.js"></script>
+  <script src="js/doctor.js"></script>
+  <script src="js/ai.js"></script>
+  <script src="js/logout.js"></script>
+  <script src="js/settings.js"></script>
+</body>
+</html>

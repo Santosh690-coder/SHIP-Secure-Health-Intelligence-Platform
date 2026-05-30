@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SHIP Billing Admin</title>
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/billing-admin.css" />
+  
+</head>
+<body>
+  <div class="admin-page">
+    <aside class="sidebar">
+      <h2>SHIP Admin</h2>
+      <nav>
+        <a href="admin-dashboard.html">Dashboard</a>
+        <a href="billing-admin.html" class="active">Billing</a>
+        <a href="patient-admin.html">Patients</a>
+        <a href="doctor-admin.html">Doctors</a>
+      </nav>
+    </aside>
+
+    <main class="content">
+      <header class="topbar">
+        <div>
+          <h1>Billing Management</h1>
+          <p>View and manage patient billing records.</p>
+        </div>
+        <button id="refreshBtn">Refresh</button>
+      </header>
+
+      <section class="stats">
+        <div class="stat-card">
+          <h3>Total Bills</h3>
+          <p id="totalBills">0</p>
+        </div>
+        <div class="stat-card">
+          <h3>Total Paid</h3>
+          <p id="totalPaid">₹0</p>
+        </div>
+        <div class="stat-card">
+          <h3>Pending</h3>
+          <p id="totalPending">₹0</p>
+        </div>
+      </section>
+
+      <section class="filters">
+        <input type="text" id="searchInput" placeholder="Search by patient, bill id, or doctor..." />
+        <select id="statusFilter">
+          <option value="all">All Status</option>
+          <option value="paid">Paid</option>
+          <option value="pending">Pending</option>
+          <option value="partial">Partial</option>
+        </select>
+      </section>
+
+      <section class="table-card">
+        <table id="billingTable">
+          <thead>
+            <tr>
+              <th>Bill ID</th>
+              <th>Patient</th>
+              <th>Doctor</th>
+              <th>Service</th>
+              <th>Amount</th>
+              <th>Paid</th>
+              <th>Status</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody id="billingBody">
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/billing-admin.js"></script>
+</body>
+</html>
